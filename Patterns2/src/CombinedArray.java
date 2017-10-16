@@ -17,12 +17,16 @@ public class CombinedArray<E> implements Sequence<E> {
         seq.print(delimiter, ps);
     }
 
+    //note that if  "enclosure" doesn't have space in it, the answer will be enclosed in the whole string
+    //for example print("", "- -",ps) -> -1234-   while print ("", "--", ps) -> --1234--
+
     public void print(String delimiter, String header, String enclosure, Boolean sizeMention, PrintStream ps){
         try{
             ps.print(header);
-            ps.print(enclosure.substring(0, enclosure.indexOf(' ')));
+            int i = enclosure.indexOf(' ');
+            ps.print(i >= 0? enclosure.substring(0, i): enclosure);
             seq.print(delimiter, ps);
-            ps.print(enclosure.substring(enclosure.indexOf(' ') + 1));
+            ps.print(i >= 0? enclosure.substring(i + 1): enclosure);
             if(sizeMention){
                 ps.print(" for a total of " + size() + " elements");
             }
