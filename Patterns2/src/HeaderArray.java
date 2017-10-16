@@ -1,7 +1,7 @@
 import java.io.PrintStream;
 
 public class HeaderArray<E> implements Sequence<E>{
-    private Sequence<E> seq;
+    public Sequence<E> seq;
 
     public HeaderArray (Sequence<E> seq){
         this.seq = seq;

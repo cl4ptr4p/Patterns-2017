@@ -9,11 +9,10 @@ public class Patterns2 {
         new SizeMentionArray<>(new DelimiterArray<>('1', '2', '3', '4')).print("_-_", false, System.out);
         
         new CombinedArray<>(new HeaderArray<>(new DelimiterArray<>(1, 2, 3, 4)))
-                .print(" ._. ", "Wazzzup", "{\\[ ]/}", true, System.out);
+                .print(" ._. ", "Wazzzup ", "{\\[]/}", true, System.out);
     
         new CombinedArray<>(new SizeMentionArray<>(new DelimiterArray<>(new Pair(1,2), new Pair(3,4))))
-                .print(" ._. ", "Wazzzup", "{\\[ ]/}", true, System.out);
-        
+                .print(" ._. ", "Wazzzup ", "{\\[ ]/}", true, System.out);
         
     }
     
