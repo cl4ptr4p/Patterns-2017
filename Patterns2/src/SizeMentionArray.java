@@ -1,27 +1,15 @@
 import java.io.PrintStream;
 
-public class SizeMentionArray<E> implements Sequence<E>{
+public class SizeMentionArray<E> extends DelimiterArray<E>{
     private Sequence<E> seq;
-
-    public SizeMentionArray(Sequence<E> seq){
+    private Boolean sizeMention;
+    
+    public SizeMentionArray(Sequence<E> seq, Boolean sizeMention){
         this.seq = seq;
+        this.sizeMention = sizeMention;
     }
 
-/*    public SizeMentionArray(E... args){
-        seq = new DelimiterArray(args);
-    }
-*/
-    @Override
     public void print(String delimiter, PrintStream ps) {
-        seq.print(delimiter, ps);
-    }
-
-    @Override
-    public int size() {
-        return seq.size();
-    }
-
-    public void print(String delimiter, Boolean sizeMention, PrintStream ps) {
         try{
             seq.print(delimiter, ps);
             if(sizeMention){

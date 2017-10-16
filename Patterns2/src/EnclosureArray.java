@@ -2,26 +2,18 @@ import com.sun.org.glassfish.gmbal.ParameterNames;
 
 import java.io.PrintStream;
 
-public class EnclosureArray<E> implements Sequence<E> {
+public class EnclosureArray<E> extends DelimiterArray<E> {
     private Sequence<E> seq;
-
-    public EnclosureArray(Sequence<E> seq){
+    private String enclosure;
+    
+    public EnclosureArray(Sequence<E> seq, String enclosure){
         this.seq = seq;
+        this.enclosure = enclosure;
     }
-
-    @Override
-    public void print(String delimiter, PrintStream ps) {
-        seq.print(delimiter, ps);
-    }
-
-    @Override
-    public int size() {
-        return seq.size();
-    }
-
+    
     //note that if "enclosure" doesn't have space in it, the answer will be enclosed in the whole string
     //for example print("", "- -",ps) -> -1234-   while print ("", "--", ps) -> --1234--
-    public void print(String delimiter, String enclosure, PrintStream ps){
+    public void print(String delimiter, PrintStream ps){
         try{
             int i = enclosure.indexOf(' ');
             ps.print(i >= 0? enclosure.substring(0, i): enclosure);
