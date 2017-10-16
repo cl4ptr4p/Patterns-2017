@@ -1,27 +1,15 @@
 import java.io.PrintStream;
 
-public class HeaderArray<E> implements Sequence<E>{
-    public Sequence<E> seq;
+public class HeaderArray<E> extends DelimiterArray<E>{
+    private Sequence<E> seq;
+    private String header;
 
-    public HeaderArray (Sequence<E> seq){
+    public HeaderArray (Sequence<E> seq, String header){
         this.seq = seq;
+        this.header = header;
     }
-
-  /*  public HeaderArray (E... args){
-        seq = new DelimiterArray(args);
-    }
-*/
-    @Override
-    public void print(String delimiter, PrintStream ps) {
-        seq.print(delimiter, ps);
-    }
-
-    @Override
-    public int size() {
-        return seq.size();
-    }
-
-    public void print(String delimiter, String header, PrintStream ps){
+    
+    public void print(String delimiter, PrintStream ps){
         try{
             ps.print(header + " ");
             seq.print(delimiter, ps);
